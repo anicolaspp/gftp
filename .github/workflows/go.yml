@@ -26,3 +26,5 @@ jobs:
 
     - name: Deploy to App Engine
       uses: google-github-actions/deploy-appengine@v0.4.0
+      with:
+        project_id: ${{secrets.project_id}}
