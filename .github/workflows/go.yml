@@ -24,5 +24,9 @@ jobs:
     - name: Test
       run: go test -v ./...
 
+    - name: Set up gcloud Cloud SDK environment
+      uses: google-github-actions/setup-gcloud@v0.2.0
+
+
     - name: Deploy to App Engine
       uses: google-github-actions/deploy-appengine@v0.4.0
