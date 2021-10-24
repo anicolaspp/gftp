@@ -23,8 +23,8 @@ jobs:
 
     - name: Test
       run: go test -v ./...
-
+    
     - name: Deploy to App Engine
       uses: google-github-actions/deploy-appengine@v0.4.0
       with:
-        project_id: ${{secrets.project_id}}
+        credentials: ${{ secrets.GCP_SA_KEY }}
