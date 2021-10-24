@@ -1,0 +1,16 @@
+syntax = "proto3";
+package gftp;
+option go_package = "com.github.anicolaspp.gftp/protos/server";
+
+service Gftp {
+    rpc Status(StatusRequest) returns (StatusResponse) {}
+}
+
+message StatusRequest {
+    string message = 1;
+}
+
+message StatusResponse {
+    string message = 1;
+    int64 time = 2;
+}
