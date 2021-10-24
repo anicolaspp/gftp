@@ -10,13 +10,13 @@ import (
 )
 
 const (
-	address     = "gftp-329818.uc.r.appspot.com:50051"
+	address     = ":50051"
 	defaultName = "world"
 )
 
 func main() {
 	log.Println("Running...")
-	conn, err := grpc.Dial(address, grpc.WithInsecure())
+	conn, err := grpc.Dial(address, grpc.WithInsecure(), grpc.WithBlock())
 	if err != nil {
 		log.Fatalf("did not connect: %v", err)
 	}
