@@ -1,6 +1,7 @@
 package fs
 
 import (
+	"fmt"
 	"os"
 	"path"
 )
@@ -37,6 +38,8 @@ type DirMeta struct {
 type Mem struct {
 	Mount string
 	User  string
+
+	currentPath string
 }
 
 // NewMemFileSystem creates a instance of the in memory file system mounted
@@ -51,6 +54,7 @@ func NewMemFileSystem(mountPoint, user string) (*Mem, error) {
 		return nil, err
 	}
 
+	vfs.currentPath = vfs.Root()
 	return vfs, nil
 }
 
@@ -62,4 +66,8 @@ func (m *Mem) Root() string {
 // MountPoint is the mount point in the underlaying file system.
 func (m *Mem) MountPoint() string {
 	return m.Mount
+}
+
+func (m *Mem) Create(meta *DirMeta) (string, error) {
+	return "", fmt.Errorf("implement me")
 }
