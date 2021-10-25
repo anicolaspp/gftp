@@ -1,7 +1,6 @@
 package fs
 
 import (
-	"os"
 	"path"
 	"testing"
 )
@@ -27,11 +26,6 @@ func TestMem(t *testing.T) {
 			want := path.Join(tc.mount, tc.user)
 			if fs.Root() != want {
 				t.Errorf("Wrong fs rool, got = %v, want = %v", fs.Root(), want)
-			}
-
-			_, err = os.Open(fs.Root())
-			if err != nil {
-				t.Errorf("Cannot open user root director %s", fs.Root())
 			}
 
 			want = tc.mount
