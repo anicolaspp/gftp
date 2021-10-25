@@ -4,6 +4,19 @@ option go_package = "com.github.anicolaspp.gftp/protos/server";
 
 service Gftp {
     rpc Status(StatusRequest) returns (StatusResponse) {}
+
+    rpc List(DirRequest) returns (DirResponse) {}
+    rpc Get(FileRequest) returns (FileContent) {}
+    rpc Put(FilePutRequest) returns (DirResponse) {}
+
+    rpc Login(User) returns (DirResponse) {}
+    rpc Move(DirRequest) returns (DirResponse) {}
+    rpc Remove(FileRequest) returns (DirResponse) {}
+}
+
+message User {
+    string name = 1;
+    bytes pass = 2;
 }
 
 message StatusRequest {
@@ -13,4 +26,25 @@ message StatusRequest {
 message StatusResponse {
     string message = 1;
     int64 time = 2;
+}
+
+message DirRequest {
+    string path = 1;
+}
+
+message DirResponse {
+    repeated string path = 1;
+}
+
+message FileRequest {
+    string path = 1;
+}
+
+message FileContent {
+    bytes content = 1;
+}
+
+message FilePutRequest {
+    FileRequest file = 1;
+    FileContent content = 2;
 }
